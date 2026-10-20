@@ -1,0 +1,65 @@
+{
+  "name": "cool-tabs",
+  "displayName": "Cool Tabs",
+  "description": "Markdown list helpers: hotkey bullet + Tab / Shift+Tab indent for list items.",
+  "version": "0.0.1",
+  "publisher": "local",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "coolTabs.toggleBullet",
+        "title": "Cool Tabs: Make Line a Bullet Item"
+      },
+      {
+        "command": "coolTabs.indentList",
+        "title": "Cool Tabs: Indent List Item (add one level)"
+      },
+      {
+        "command": "coolTabs.outdentList",
+        "title": "Cool Tabs: Outdent List Item (remove one level)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "coolTabs.toggleBullet",
+        "key": "ctrl+shift+l",
+        "mac": "cmd+shift+l",
+        "when": "editorTextFocus && editorLangId == markdown && !editorReadonly"
+      },
+      {
+        "command": "coolTabs.indentList",
+        "key": "tab",
+        "mac": "tab",
+        "when": "editorTextFocus && editorLangId == markdown && !editorReadonly"
+      },
+      {
+        "command": "coolTabs.outdentList",
+        "key": "shift+tab",
+        "mac": "shift+tab",
+        "when": "editorTextFocus && editorLangId == markdown && !editorReadonly"
+      }
+    ],
+    "configuration": {
+      "title": "Cool Tabs",
+      "properties": {
+        "coolTabs.indent": {
+          "type": "string",
+          "enum": [
+            "2sp",
+            "tab"
+          ],
+          "default": "2sp",
+          "description": "Indent unit used by Tab (add level) and Shift+Tab (remove level). '2sp' = two spaces, 'tab' = one tab character."
+        }
+      }
+    }
+  }
+}
